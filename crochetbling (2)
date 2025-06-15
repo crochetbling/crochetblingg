@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrochetBling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #ffcce0);
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #faf5f7;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: #d63384;
+      letter-spacing: 1px;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #d63384;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: 'Dancing Script', cursive;
+    }
+    .product-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 220px;
+      text-align: center;
+      padding: 1rem;
+      transition: 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      height: 180px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .card h3 {
+      color: #d63384;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      font-weight: 600;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+    .card button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    .card button:hover { background-color: #b02a6f; }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 5px solid white;
+      border-radius: 15px;
+    }
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+    .cart ul li {
+      margin-bottom: 10px;
+    }
+    .remove-btn {
+      background: transparent;
+      border: none;
+      color: #d63384;
+      margin-left: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .contact-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(220, 80, 140, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border: 1px solid #dfa4bd;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .contact-form button:hover { background-color: #b02a6f; }
+    footer {
+      background: #fff0f5;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.2rem;
+      color: #d63384;
+    }
+    footer a {
+      color: #490025;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>CrochetBling</header>
+
+<section class="product-section">
+  <!-- Product Cards -->
+  <div class="card"><img src="20250117_170415.jpg" alt="Bow keychain" onclick="openLightbox(this.src)">
+    <h3>Bow keychain</h3><p>Rs. 250</p>
+    <button onclick="addToCart('Bow keychain', 250)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250522_164651.jpg" alt="Mini versions" onclick="openLightbox(this.src)">
+    <h3>Mini versions</h3><p>Rs. 550</p>
+    <button onclick="addToCart('Mini versions', 550)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250524_114800.jpg" alt="Twilight hangs" onclick="openLightbox(this.src)">
+    <h3>Twilight hangs</h3><p>Rs. 400</p>
+    <button onclick="addToCart('Twilight hangs', 400)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250526_115442.jpg" alt="Miss fluffster" onclick="openLightbox(this.src)">
+    <h3>Miss fluffster</h3><p>Rs. 550</p>
+    <button onclick="addToCart('Miss fluffster', 550)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250524_114626.jpg" alt="Beans teddy" onclick="openLightbox(this.src)">
+    <h3>Beans Teddy</h3><p>Rs. 550</p>
+    <button onclick="addToCart('Beans Teddy', 550)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250123_162400.jpg" alt="red&white Gajray" onclick="openLightbox(this.src)">
+    <h3>red&white Gajray</h3><p>Rs. 500</p>
+    <button onclick="addToCart('red&white Gajray', 500)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250323_132011.jpg" alt="star moon keychain" onclick="openLightbox(this.src)">
+    <h3>star moon Keychain</h3><p>Rs. 250</p>
+    <button onclick="addToCart('star moon Keychain', 250)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250603_122108.jpg" alt="star chainbelt" onclick="openLightbox(this.src)">
+    <h3>star chainbelt</h3><p>Rs. 850</p>
+    <button onclick="addToCart('star chainbelt', 850)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250602_144128.jpg" alt="Mr Rubby bun" onclick="openLightbox(this.src)">
+    <h3>Mr Rubby bun</h3><p>Rs. 450</p>
+    <button onclick="addToCart('Mr Rubby bun', 450)">Add to Cart</button>
+  </div>
+  <div class="card"><img src="20250130_143013.jpg" alt="florence keychain" onclick="openLightbox(this.src)">
+    <h3>florence keychain</h3><p>Rs. 250</p>
+    <button onclick="addToCart('florence keychain', 250)">Add to Cart</button>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Popup Image">
+</div>
+
+<!-- Cart Section -->
+<section class="cart" id="cart">
+  <h2>Your Cart 🛒</h2>
+  <ul id="cart-items"></ul>
+  <p id="total">Total: Rs. 0</p>
+
+  <form action="https://formspree.io/f/movwwabn" method="POST" class="contact-form" onsubmit="return submitOrder(event)">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="text" name="phone" placeholder="Phone Number" required />
+    <textarea name="address" placeholder="Shipping Address" rows="3" required></textarea>
+    <textarea name="message" placeholder="Any customization or notes?" rows="3"></textarea>
+    <input type="hidden" name="orderDetails" id="order-details">
+    <button type="submit">Send Order</button>
+  </form>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+  <h2>About Us</h2>
+  <p>
+    CrochetBling is all about creating cozy, beautiful crochet pieces blended with a touch of sparkle and elegance.
+    Every piece is lovingly handcrafted to bring warmth, beauty, and a touch of glam to your everyday life. 
+    Thank you for supporting handmade! 🌸 Stay cozy, stay blingy 💕
+  </p>
+</section>
+
+<footer>
+  💌 For orders & inquiries, email us at  
+  <a href="mailto:saraan1023@gmail.com">saraan1023@gmail.com</a><br>
+  &copy; 2025 CrochetBling. All rights reserved.
+</footer>
+
+<script>
+  let cart = [];
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  function addToCart(itemName, price) {
+    cart.push({ item: itemName, price: price });
+    updateCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartList = document.getElementById('cart-items');
+    const totalDisplay = document.getElementById('total');
+    const orderDetailsInput = document.getElementById('order-details');
+    cartList.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((entry, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `${entry.item} - Rs. ${entry.price} 
+        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>`;
+      cartList.appendChild(li);
+      total += entry.price;
+    });
+
+    totalDisplay.textContent = `Total: Rs. ${total}`;
+    orderDetailsInput.value = cart.map(e => `${e.item} - Rs. ${e.price}`).join(', ') + `. Total: Rs. ${total}`;
+  }
+
+  function submitOrder(event) {
+    if (cart.length === 0) {
+      alert("Your cart is empty! Please add items before submitting.");
+      event.preventDefault();
+      return false;
+    }
+    alert("🎀 Thank you for your order! We’ll get in touch soon.");
+    return true;
+  }
+</script>
+
+</body>
+</html>
+
